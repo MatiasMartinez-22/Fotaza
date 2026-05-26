@@ -1,12 +1,11 @@
-
 {
   "name": "fotaza",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "node src/app.js",
-  "dev": "nodemon src/app.js"
-},
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatiasMartinez-22/Fotaza.git"
@@ -18,7 +17,6 @@
     "url": "https://github.com/MatiasMartinez-22/Fotaza/issues"
   },
   "homepage": "https://github.com/MatiasMartinez-22/Fotaza#readme",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "dotenv": "^17.4.2",
@@ -29,7 +27,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "description": ""
 }
-
-
