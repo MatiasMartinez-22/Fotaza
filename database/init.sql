@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS seguidores CASCADE;
+DROP TABLE IF EXISTS valoraciones CASCADE;
+DROP TABLE IF EXISTS comentarios CASCADE;
+DROP TABLE IF EXISTS publicacion_etiquetas CASCADE;
+DROP TABLE IF EXISTS etiquetas CASCADE;
 DROP TABLE IF EXISTS imagenes CASCADE;
 DROP TABLE IF EXISTS publicaciones CASCADE;
 DROP TABLE IF EXISTS usuarios CASCADE;
@@ -87,10 +92,91 @@ CREATE TABLE imagenes (
 
 );
 
+CREATE TABLE etiquetas (
+    id_etiqueta SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
 
+CREATE TABLE publicacion_etiquetas (
+    id_publicacion INTEGER NOT NULL,
+    id_etiqueta INTEGER NOT NULL,
+
+    PRIMARY KEY (id_publicacion, id_etiqueta),
+
+    FOREIGN KEY (id_publicacion)
+        REFERENCES publicaciones(id_publicacion)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_etiqueta)
+        REFERENCES etiquetas(id_etiqueta)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE comentarios (
+    id_comentario SERIAL PRIMARY KEY,
+    id_imagen INTEGER NOT NULL,
+    id_usuario INTEGER NOT NULL,
+    texto TEXT NOT NULL,
+    estado VARCHAR(20) DEFAULT 'activo',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_imagen)
+        REFERENCES imagenes(id_imagen)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE valoraciones (
+    id_valoracion SERIAL PRIMARY KEY,
+    id_imagen INTEGER NOT NULL,
+    id_usuario INTEGER NOT NULL,
+    valor INTEGER NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE (id_imagen, id_usuario),
+
+    CHECK (valor >= 1 AND valor <= 5),
+
+    FOREIGN KEY (id_imagen)
+        REFERENCES imagenes(id_imagen)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_usuario)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE seguidores (
+    id_seguidor INTEGER NOT NULL,
+    id_seguido INTEGER NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id_seguidor, id_seguido),
+
+    CHECK (id_seguidor <> id_seguido),
+
+    FOREIGN KEY (id_seguidor)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_seguido)
+        REFERENCES usuarios(id_usuario)
+        ON DELETE CASCADE
+);
 
 INSERT INTO roles(nombre)
 VALUES
 ('usuario'),
 ('validador'),
 ('admin');
+
+INSERT INTO etiquetas(nombre)
+VALUES
+('naturaleza'),
+('paisaje'),
+('urbano'),
+('retrato'),
+('animales');
