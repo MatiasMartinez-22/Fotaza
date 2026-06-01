@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "node src/app.js",
-  "dev": "nodemon src/app.js",
-  "db:init": "cmd /c \"\"C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe\" -U postgres -d fotaza -f database/init.sql\""
-},
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "db:init": "cmd /c \"\"C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe\" -U postgres -d fotaza -f database/init.sql\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatiasMartinez-22/Fotaza.git"
