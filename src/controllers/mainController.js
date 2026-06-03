@@ -6,7 +6,7 @@ function index(req, res) {
 
 module.exports = {
     index
-};*/
+};
 
 const pool = require('../config/db');
 
@@ -24,6 +24,17 @@ async function index(req, res) {
 
         console.log(error);
     }
+}
+
+module.exports = {
+    index
+};
+*/
+
+function index(req, res) {
+    res.render('index', {
+        user: req.session.user
+    });
 }
 
 module.exports = {

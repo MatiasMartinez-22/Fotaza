@@ -1,6 +1,13 @@
 extends layout
 
 block content
-
     h1 Bienvenido a Fotaza
-    p Proyecto de Programación Web II
+
+    if user
+        p Hola #{user.nombre}
+        form(action="/logout" method="POST")
+            button(type="submit") Cerrar sesión
+    else
+        a(href="/login") Iniciar sesión
+        br
+        a(href="/signup") Registrarse

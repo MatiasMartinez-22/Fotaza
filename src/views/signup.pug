@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title Registro
+    link(rel="stylesheet", href="/css/style.css")
+
+  body
+    h1 Registro de Usuario
+
+    if error
+      p(style="color:red")= error
+
+    form(action="/signup" method="POST")
+      div
+        label Nombre
+        input(type="text" name="nombre" required)
+
+      div
+        label Apellido
+        input(type="text" name="apellido" required)
+
+      div
+        label Email
+        input(type="email" name="email" required)
+
+      div
+        label Contraseña
+        input(type="password" name="password" required)
+
+      button(type="submit") Registrarse
+
+    br
+    a(href="/login") Ya tengo cuenta
