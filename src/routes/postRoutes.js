@@ -7,7 +7,13 @@ const postController = require('../controllers/postController');
 router.get(
     '/crear-publicacion',
     authMiddleware,
-    postController.showCreatePost
+    postController.showCreateForm
+);
+
+router.post(
+    '/crear-publicacion',
+    authMiddleware,
+    postController.create
 );
 
 module.exports = router;
