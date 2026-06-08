@@ -1,13 +1,47 @@
 extends layout
 
 block content
+
     h1 Bienvenido a Fotaza
 
     if user
+
         p Hola #{user.nombre}
+
+        a(href="/crear-publicacion")
+            button Nueva publicación
+
+        br
+        br
+
         form(action="/logout" method="POST")
             button(type="submit") Cerrar sesión
+
+        hr
+
+        each publicacion in publicaciones
+
+            div(style="border:1px solid #ccc; padding:15px; margin-bottom:20px;")
+
+                h2= publicacion.titulo
+
+                p= publicacion.descripcion
+
+                p
+                    b Autor:
+                    |  #{publicacion.nombre} #{publicacion.apellido}
+
+                if publicacion.imagen_base64
+
+                    img(
+                        src=publicacion.imagen_base64
+                        style="max-width:500px; max-height:500px;"
+                    )
+
     else
+
         a(href="/login") Iniciar sesión
+
         br
+
         a(href="/signup") Registrarse

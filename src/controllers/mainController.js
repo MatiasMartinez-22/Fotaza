@@ -29,12 +29,33 @@ async function index(req, res) {
 module.exports = {
     index
 };
-*/
+
 
 function index(req, res) {
     res.render('index', {
         user: req.session.user
     });
+}
+
+module.exports = {
+    index
+};*/
+
+const Post = require('../models/Post');
+
+async function index(req, res) {
+    try {
+        const publicaciones = await Post.findAll();
+
+        res.render('index', {
+            user: req.session.user,
+            publicaciones
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.send('Error al cargar el inicio');
+    }
 }
 
 module.exports = {
