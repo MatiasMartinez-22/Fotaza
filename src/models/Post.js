@@ -19,18 +19,19 @@ async function createPost(idUsuario, titulo, descripcion) {
 async function findAll() {
 
     const query = `
-        SELECT
-            p.*,
-            u.nombre,
-            u.apellido,
-            i.imagen_base64
-        FROM publicaciones p
-        INNER JOIN usuarios u
-            ON p.id_usuario = u.id_usuario
-        LEFT JOIN imagenes i
-            ON p.id_publicacion = i.id_publicacion
-        ORDER BY p.fecha_creacion DESC
-    `;
+    SELECT
+        p.*,
+        u.nombre,
+        u.apellido,
+        i.id_imagen,
+        i.imagen_base64
+    FROM publicaciones p
+    INNER JOIN usuarios u
+        ON p.id_usuario = u.id_usuario
+    LEFT JOIN imagenes i
+        ON p.id_publicacion = i.id_publicacion
+    ORDER BY p.fecha_creacion DESC
+`;
 
     const result = await pool.query(query);
 
