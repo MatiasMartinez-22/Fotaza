@@ -11,6 +11,7 @@ const session = require('express-session');
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
+const ratingRoutes = require('./routes/ratingRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', mainRoutes);
 app.use('/', userRoutes);
 app.use('/', postRoutes);
+app.use('/', ratingRoutes);
 app.use('/', commentRoutes);
 // Puerto
 const PORT = process.env.PORT || 3000;
