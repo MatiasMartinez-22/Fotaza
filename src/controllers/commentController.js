@@ -1,6 +1,8 @@
 const Comment = require('../models/Comment');
 
 exports.create = async (req, res) => {
+    console.log("ENTRO AL CONTROLADOR");
+    console.log(req.body);
     try {
         const { id_imagen, texto } = req.body;
 
@@ -17,3 +19,4 @@ exports.create = async (req, res) => {
         res.send('Error al crear comentario');
     }
 };
+

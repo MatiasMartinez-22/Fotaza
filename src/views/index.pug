@@ -37,12 +37,14 @@ block content
                         src=publicacion.imagen_base64
                         style="max-width:500px; max-height:500px;"
                     )
+
                     br
                     br
 
                     p
                         b Valoración:
                         |  ⭐ #{publicacion.promedio_valoracion} / 5 (#{publicacion.cantidad_valoraciones} votos)
+
                     form(action=`/valorar/${publicacion.id_imagen}` method="POST")
                         select(name="valor" required)
                             option(value="1") ⭐ 1
@@ -52,6 +54,37 @@ block content
                             option(value="5") ⭐⭐⭐⭐⭐ 5
 
                         button(type="submit") Valorar
+
+                    hr
+
+                    h4 Comentarios
+
+                    if publicacion.comentarios.length == 0
+                        p No hay comentarios.
+
+                    else
+                        each comentario in publicacion.comentarios
+                            p
+                                b #{comentario.nombre} #{comentario.apellido}:
+                                |  #{comentario.texto}
+
+                    br
+
+                    form(action="/comentarios" method="POST")
+                        input(
+                            type="hidden"
+                            name="id_imagen"
+                            value=publicacion.id_imagen
+                        )
+
+                        input(
+                            type="text"
+                            name="texto"
+                            placeholder="Escribí un comentario..."
+                            required
+                        )
+
+                        button(type="submit") Comentar
 
     else
 

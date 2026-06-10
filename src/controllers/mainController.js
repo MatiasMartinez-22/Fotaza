@@ -42,10 +42,19 @@ module.exports = {
 };*/
 
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 
 async function index(req, res) {
     try {
         const publicaciones = await Post.findAll();
+
+        for (const publicacion of publicaciones) {
+            if (publicacion.id_imagen) {
+                publicacion.comentarios = await Comment.findByImage(publicacion.id_imagen);
+            } else {
+                publicacion.comentarios = [];
+            }
+        }
 
         res.render('index', {
             user: req.session.user,
