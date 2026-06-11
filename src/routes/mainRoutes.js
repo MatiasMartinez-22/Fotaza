@@ -5,6 +5,7 @@ const mainController = require('../controllers/mainController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 router.get('/', mainController.index);
+router.get('/buscar', mainController.buscar);
 
 router.get('/privado', authMiddleware, (req, res) => {
     res.send('Zona privada');

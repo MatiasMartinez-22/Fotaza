@@ -67,6 +67,35 @@ async function index(req, res) {
     }
 }
 
+async function buscar(req, res) {
+    try {
+
+        const termino = req.query.q;
+
+        const publicaciones = await Post.search(termino);
+
+        for (const publicacion of publicaciones) {
+            if (publicacion.id_imagen) {
+                publicacion.comentarios =
+                    await Comment.findByImage(publicacion.id_imagen);
+            } else {
+                publicacion.comentarios = [];
+            }
+        }
+
+        res.render('index', {
+            user: req.session.user,
+            publicaciones
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.send('Error al buscar publicaciones');
+    }
+}
+
 module.exports = {
-    index
+    index,
+    buscar
 };
+

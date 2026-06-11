@@ -46,7 +46,41 @@ async function findAll() {
     return result.rows;
 }
 
+async function search(term) {
+    const query = `
+        SELECT
+            p.*,
+            u.nombre,
+            u.apellido,
+            i.id_imagen,
+            i.imagen_base64,
+            COALESCE(ROUND(AVG(v.valor)::numeric, 1), 0) AS promedio_valoracion,
+            COUNT(v.id_valoracion) AS cantidad_valoraciones
+        FROM publicaciones p
+        INNER JOIN usuarios u
+            ON p.id_usuario = u.id_usuario
+        LEFT JOIN imagenes i
+            ON p.id_publicacion = i.id_publicacion
+        LEFT JOIN valoraciones v
+            ON i.id_imagen = v.id_imagen
+        WHERE
+            LOWER(p.titulo) LIKE LOWER($1)
+            OR LOWER(p.descripcion) LIKE LOWER($1)
+        GROUP BY
+            p.id_publicacion,
+            u.nombre,
+            u.apellido,
+            i.id_imagen,
+            i.imagen_base64
+        ORDER BY p.fecha_creacion DESC
+    `;
+
+    const result = await pool.query(query, [`%${term}%`]);
+    return result.rows;
+}
+
 module.exports = {
     createPost,
-    findAll
+    findAll,
+    search
 };

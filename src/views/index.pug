@@ -8,7 +8,19 @@ block content
 
         p Hola #{user.nombre}
 
-   
+        br
+
+        form(action="/buscar" method="GET")
+
+            input(
+                type="text"
+                name="q"
+                placeholder="Buscar publicaciones..."
+            )
+
+            button(type="submit") Buscar
+
+        br
 
         form(action="/logout" method="POST")
             button(type="submit") Cerrar sesión
