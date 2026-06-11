@@ -3,6 +3,16 @@ html
     head
         title Fotaza
         link(rel="stylesheet" href="/css/style.css")
-
     body
-        block content
+        header.navbar
+            div.logo 📷 Fotaza
+            nav
+                a(href="/") Inicio
+                a(href="/crear-publicacion") Nueva publicación
+                a(href="/profile") Perfil
+
+        main.container
+            block content
+
+        footer.footer
+            | Fotaza © 2026

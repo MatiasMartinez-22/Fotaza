@@ -5,7 +5,7 @@
 body {
     margin: 0;
     font-family: Georgia, 'Times New Roman', serif;
-    background: #f8eedb;
+    background: #f7f2eb;
     color: #2b241d;
 }
 
@@ -93,4 +93,53 @@ form {
 
 h4 {
     color: #4b321f;
+}
+.navbar {
+    background: #3a2a1a;
+    color: #fffaf2;
+    padding: 18px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #b88a44;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar nav a {
+    color: #fffaf2;
+    margin-left: 18px;
+    font-weight: bold;
+}
+
+.navbar nav a:hover {
+    color: #f1c27d;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 25px 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #6b4a2f;
+}
+
+button {
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+input[type="text"] {
+    min-width: 240px;
 }

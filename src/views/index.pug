@@ -8,11 +8,7 @@ block content
 
         p Hola #{user.nombre}
 
-        a(href="/crear-publicacion")
-            button Nueva publicación
-
-        br
-        br
+   
 
         form(action="/logout" method="POST")
             button(type="submit") Cerrar sesión
@@ -30,7 +26,7 @@ block content
                 p
                     b Autor:
                     |  #{publicacion.nombre} #{publicacion.apellido}
-                    
+
                 if publicacion.id_usuario != user.id_usuario
 
                     form(action=`/seguir/${publicacion.id_usuario}` method="POST")
