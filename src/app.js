@@ -13,6 +13,7 @@ const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const ratingRoutes = require('./routes/ratingRoutes');
 const commentRoutes = require('./routes/commentRoutes');
+const followRoutes = require('./routes/followRoutes');
 const app = express();
 
 // Configuración
@@ -38,6 +39,7 @@ app.use('/', userRoutes);
 app.use('/', postRoutes);
 app.use('/', ratingRoutes);
 app.use('/', commentRoutes);
+app.use("/", followRoutes);
 // Puerto
 const PORT = process.env.PORT || 3000;
 

@@ -30,6 +30,12 @@ block content
                 p
                     b Autor:
                     |  #{publicacion.nombre} #{publicacion.apellido}
+                    
+                if publicacion.id_usuario != user.id_usuario
+
+                    form(action=`/seguir/${publicacion.id_usuario}` method="POST")
+                        button(type="submit") Seguir
+
 
                 if publicacion.imagen_base64
 
