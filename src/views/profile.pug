@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+    h1 Perfil de #{usuario.nombre} #{usuario.apellido}
+
+    div(style="border:1px solid #ccc; padding:15px; margin-bottom:20px;")
+        p
+            b Email:
+            |  #{usuario.email}
+
+        p
+            b Seguidores:
+            |  #{seguidores}
+
+        p
+            b Siguiendo:
+            |  #{siguiendo}
+
+        p
+            b Publicaciones:
+            |  #{publicaciones.length}
+
+    h2 Publicaciones
+
+    if publicaciones.length == 0
+        p Este usuario todavía no tiene publicaciones.
+
+    else
+        each publicacion in publicaciones
+            div(style="border:1px solid #ccc; padding:15px; margin-bottom:20px;")
+                h3= publicacion.titulo
+
+                p= publicacion.descripcion
+
+                if publicacion.imagen_base64
+                    img(
+                        src=publicacion.imagen_base64
+                        style="max-width:400px; max-height:400px;"
+                    )
+
+                p
+                    b Valoración:
+                    |  ⭐ #{publicacion.promedio_valoracion} / 5 (#{publicacion.cantidad_valoraciones} votos)
+
+    br
+    a(href="/") Volver al inicio

@@ -36,8 +36,9 @@ block content
                 p= publicacion.descripcion
 
                 p
-                    b Autor:
-                    |  #{publicacion.nombre} #{publicacion.apellido}
+                  b Autor:
+                  |  
+                  a(href=`/perfil/${publicacion.id_usuario}`) #{publicacion.nombre} #{publicacion.apellido}
 
                 if publicacion.id_usuario != user.id_usuario
 
