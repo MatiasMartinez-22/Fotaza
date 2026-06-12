@@ -9,7 +9,7 @@ exports.follow = async (req, res) => {
             req.params.id
         );
 
-        res.redirect('/');
+        res.redirect(req.get('Referer') || '/');
 
     }catch(error){
 
@@ -27,7 +27,7 @@ exports.unfollow = async (req, res) => {
             req.params.id
         );
 
-        res.redirect(`/perfil/${req.params.id}`);
+        res.redirect(req.get('Referer') || '/');
 
     } catch (error) {
         console.error(error);

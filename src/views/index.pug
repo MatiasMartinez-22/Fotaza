@@ -42,8 +42,15 @@ block content
 
                 if publicacion.id_usuario != user.id_usuario
 
-                    form(action=`/seguir/${publicacion.id_usuario}` method="POST")
-                        button(type="submit") Seguir
+                    if publicacion.loSigue
+
+                        form(action=`/dejar-seguir/${publicacion.id_usuario}` method="POST")
+                            button(type="submit") Dejar de seguir
+
+                    else
+
+                        form(action=`/seguir/${publicacion.id_usuario}` method="POST")
+                            button(type="submit") Seguir
 
 
                 if publicacion.imagen_base64

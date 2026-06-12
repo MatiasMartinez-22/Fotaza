@@ -43,6 +43,7 @@ module.exports = {
 
 const Post = require('../models/Post');
 const Comment = require('../models/Comment');
+const Follow = require('../models/Follow');
 
 async function index(req, res) {
     try {
@@ -54,6 +55,19 @@ async function index(req, res) {
             } else {
                 publicacion.comentarios = [];
             }
+
+             if (
+                req.session.user &&
+                publicacion.id_usuario != req.session.user.id_usuario
+            ) {
+                publicacion.loSigue = await Follow.isFollowing(
+                    req.session.user.id_usuario,
+                    publicacion.id_usuario
+                );
+            } else {
+                publicacion.loSigue = false;
+            }
+
         }
 
         res.render('index', {
