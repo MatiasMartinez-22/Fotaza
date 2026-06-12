@@ -10,4 +10,10 @@ router.post(
     followController.follow
 );
 
+router.post(
+    '/dejar-seguir/:id',
+    authMiddleware,
+    followController.unfollow
+);
+
 module.exports = router;

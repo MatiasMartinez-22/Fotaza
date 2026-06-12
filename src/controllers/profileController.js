@@ -18,12 +18,18 @@ exports.show = async (req, res) => {
         const siguiendo =
             await Follow.countFollowing(idUsuario);
 
+        const loSigue = await Follow.isFollowing(
+            req.session.user.id_usuario,
+            idUsuario
+        );
+
         res.render('profile', {
             user: req.session.user,
             usuario,
             publicaciones,
             seguidores,
-            siguiendo
+            siguiendo,
+            loSigue
         });
 
     } catch (error) {

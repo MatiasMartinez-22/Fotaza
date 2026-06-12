@@ -20,6 +20,18 @@ block content
         p
             b Publicaciones:
             |  #{publicaciones.length}
+            
+        if user.id_usuario != usuario.id_usuario
+
+            if loSigue
+
+                form(action=`/dejar-seguir/${usuario.id_usuario}` method="POST")
+                    button(type="submit") Dejar de seguir
+
+            else
+
+                form(action=`/seguir/${usuario.id_usuario}` method="POST")
+                    button(type="submit") Seguir
 
     h2 Publicaciones
 
