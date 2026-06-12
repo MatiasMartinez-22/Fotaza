@@ -1,25 +1,24 @@
-doctype html
-html
-  head
-    title Login
-    link(rel="stylesheet", href="/css/style.css")
+extends layout
 
-  body
-    h1 Iniciar Sesión
+block content
 
-    if error
-      p(style="color:red")= error
+    div(class="form-card")
+        h1 Iniciar Sesión
 
-    form(action="/login" method="POST")
-      div
-        label Email
-        input(type="email" name="email" required)
+        if error
+            p(style="color:red")= error
 
-      div
-        label Contraseña
-        input(type="password" name="password" required)
+        form(action="/login" method="POST")
+            div
+                label(for="email") Email
+                input(type="email" name="email" id="email" required)
 
-      button(type="submit") Ingresar
+            div
+                label(for="password") Contraseña
+                input(type="password" name="password" id="password" required)
 
-    br
-    a(href="/signup") Crear cuenta
+            button(type="submit") Ingresar
+
+        br
+
+        a(href="/signup") Crear cuenta

@@ -161,3 +161,52 @@ input[type="text"] {
     font-weight: bold;
     border: 3px solid #b88a44;
 }
+
+form {
+    max-width: 420px;
+    margin: 15px auto;
+}
+
+form div {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #4b321f;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    max-width: 100%;
+}
+
+input[type="file"] {
+    border: none;
+    background: transparent;
+}
+
+form button {
+    margin-top: 8px;
+}
+
+.login-card,
+.form-card {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fffaf2;
+    border: 1px solid #c8ad85;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(80, 55, 25, 0.15);
+}
+
+.actions-home {
+    max-width: 650px;
+    margin: 0 auto 25px auto;
+    text-align: center;
+}

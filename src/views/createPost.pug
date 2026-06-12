@@ -1,32 +1,23 @@
-doctype html
-html
-    head
-        title Crear Publicación
+extends layout
 
-    body
+block content
+
+    div(class="form-card")
         h1 Nueva Publicación
 
         form(action="/crear-publicacion" method="POST")
+
             div
                 label(for="titulo") Título
-                br
                 input(type="text" name="titulo" id="titulo" required)
-
-            br
 
             div
                 label(for="descripcion") Descripción
-                br
-                textarea(name="descripcion" id="descripcion" rows="5" cols="40" required)
-
-            br
+                textarea(name="descripcion" id="descripcion" rows="5" required)
 
             div
                 label(for="img") Imagen
-                br
                 input(type="file" id="img" accept="image/*")
-
-            br
 
             div(id="imgsPreview")
 
@@ -34,12 +25,10 @@ html
             input(type="hidden" name="nombre_original" id="nombre_original")
             input(type="hidden" name="mime_type" id="mime_type")
 
-            br
-
             button(type="submit") Publicar
 
         br
 
         a(href="/") Volver al inicio
 
-        script(src="/js/createPost.js")
+    script(src="/js/createPost.js")

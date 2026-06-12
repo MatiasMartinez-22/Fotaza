@@ -6,24 +6,19 @@ block content
 
     if user
 
-        p Hola #{user.nombre}
+        div(class="actions-home")
+            p Hola #{user.nombre}
 
-        br
+            form(action="/buscar" method="GET")
+                input(
+                    type="text"
+                    name="q"
+                    placeholder="Buscar publicaciones..."
+                )
+                button(type="submit") Buscar
 
-        form(action="/buscar" method="GET")
-
-            input(
-                type="text"
-                name="q"
-                placeholder="Buscar publicaciones..."
-            )
-
-            button(type="submit") Buscar
-
-        br
-
-        form(action="/logout" method="POST")
-            button(type="submit") Cerrar sesión
+            form(action="/logout" method="POST")
+                button(type="submit") Cerrar sesión
 
         hr
 
@@ -36,9 +31,9 @@ block content
                 p= publicacion.descripcion
 
                 p
-                  b Autor:
-                  |  
-                  a(href=`/perfil/${publicacion.id_usuario}`) #{publicacion.nombre} #{publicacion.apellido}
+                    b Autor:
+                    |  
+                    a(href=`/perfil/${publicacion.id_usuario}`) #{publicacion.nombre} #{publicacion.apellido}
 
                 if publicacion.id_usuario != user.id_usuario
 
@@ -51,7 +46,6 @@ block content
 
                         form(action=`/seguir/${publicacion.id_usuario}` method="POST")
                             button(type="submit") Seguir
-
 
                 if publicacion.imagen_base64
 

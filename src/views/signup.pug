@@ -1,33 +1,32 @@
-doctype html
-html
-  head
-    title Registro
-    link(rel="stylesheet", href="/css/style.css")
+extends layout
 
-  body
-    h1 Registro de Usuario
+block content
 
-    if error
-      p(style="color:red")= error
+    div(class="form-card")
+        h1 Registro de Usuario
 
-    form(action="/signup" method="POST")
-      div
-        label Nombre
-        input(type="text" name="nombre" required)
+        if error
+            p(style="color:red")= error
 
-      div
-        label Apellido
-        input(type="text" name="apellido" required)
+        form(action="/signup" method="POST")
+            div
+                label(for="nombre") Nombre
+                input(type="text" name="nombre" id="nombre" required)
 
-      div
-        label Email
-        input(type="email" name="email" required)
+            div
+                label(for="apellido") Apellido
+                input(type="text" name="apellido" id="apellido" required)
 
-      div
-        label Contraseña
-        input(type="password" name="password" required)
+            div
+                label(for="email") Email
+                input(type="email" name="email" id="email" required)
 
-      button(type="submit") Registrarse
+            div
+                label(for="password") Contraseña
+                input(type="password" name="password" id="password" required)
 
-    br
-    a(href="/login") Ya tengo cuenta
+            button(type="submit") Registrarse
+
+        br
+
+        a(href="/login") Ya tengo cuenta

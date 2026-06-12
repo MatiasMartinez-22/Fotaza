@@ -8,8 +8,12 @@ html
             div.logo 📷 Fotaza
             nav
                 a(href="/") Inicio
-                a(href="/crear-publicacion") Nueva publicación
-                a(href="/profile") Perfil
+                if user
+                    a(href="/crear-publicacion") Nueva publicación
+                    a(href=`/perfil/${user.id_usuario}`) Perfil
+                else
+                    a(href="/login") Iniciar sesión
+                    a(href="/signup") Registrarse
 
         main.container
             block content
