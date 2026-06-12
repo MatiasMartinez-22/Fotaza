@@ -3,6 +3,9 @@ extends layout
 block content
 
     h1 Perfil de #{usuario.nombre} #{usuario.apellido}
+    
+    div(class="avatar")
+        | #{usuario.nombre[0]}#{usuario.apellido[0]}
 
     div(style="border:1px solid #ccc; padding:15px; margin-bottom:20px;")
         p
@@ -20,7 +23,7 @@ block content
         p
             b Publicaciones:
             |  #{publicaciones.length}
-            
+
         if user.id_usuario != usuario.id_usuario
 
             if loSigue
